@@ -13,16 +13,20 @@
       
      <constant name="struts.ui.theme" value="xhtml"/>  
       
-    <package name="user" namespace="/user" extends="struts-default">  
+     <package name="user" namespace="/user" extends="struts-default">  
         <action name="user_*" class="userAction" method="{1}">  
+        	<!-- 操作成功跳转到用户列表页面 -->
             <result name="success" type="redirectAction">user_queryAllUser.action</result>  
+            <!-- 操作出错跳转到出错页面 -->
             <result name="error" >/error.jsp</result>  
-            <!-- 用户管理页面 --> 
+            <!-- 用户列表页面 --> 
             <result name="userList">/index.jsp</result>  
+            <!-- 用户新增页面 --> 
             <result name="addUser">/userAdd.jsp</result>  
+            <!-- 用户更新页面 --> 
             <result name="updateUser">/userUpdate.jsp</result>  
         </action>  
-    </package>  
+     </package>  
 </struts>
 
 

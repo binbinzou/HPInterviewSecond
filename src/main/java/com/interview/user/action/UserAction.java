@@ -14,10 +14,6 @@ import com.opensymphony.xwork2.ActionSupport;
 @Controller  
 @Scope("prototype")
 public class UserAction extends ActionSupport{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	@Qualifier("userService")
