@@ -21,11 +21,11 @@
             </tr>  
             <s:iterator value="userList">  
                 <tr>  
-                    <td><s:property value="id"/> </td>  
+                    <td><s:property value="userid"/> </td>  
                     <td><s:property value="username"/> </td>  
                     <td><s:property value="age"/> </td>  
-                    <td><s:a action="user_updateJsp" namespace="/user"><s:param name="user.id">${id}</s:param>修改</s:a>  
-                      <s:a action="user_delete" namespace="/user"><s:param name="user.id">${id}</s:param>删除</s:a></td>  
+                    <td><s:a action="user_updateJsp" namespace="/user"><s:param name="user.userid"><s:property value="userid"/></s:param>修改</s:a>  
+                      <s:a action="user_delete" namespace="/user"><s:param name="user.userid"><s:property value="userid"/></s:param>删除</s:a></td>  
                 </tr>  
             </s:iterator>  
         </table>  

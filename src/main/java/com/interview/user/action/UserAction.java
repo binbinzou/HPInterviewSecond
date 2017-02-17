@@ -8,15 +8,20 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.interview.user.domain.User;
-import com.interview.user.service.UserService;
+import com.interview.user.service.IUserService;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Controller  
 @Scope("prototype")
 public class UserAction extends ActionSupport{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Autowired
 	@Qualifier("userService")
-    private UserService userService;  
+    private IUserService userService;  
    
 	private User user;  
     private List<User> userList;
@@ -42,8 +47,12 @@ public class UserAction extends ActionSupport{
         return "updateUser";  
     }  
   
-    public String add() {  
-        userService.addUser(user);  
+    public String add() { 
+        boolean tmp = userService.addUser(user); 
+        if(!tmp){
+    		addFieldError("message", "用户名不能为空、用户id重复、年龄不能超过100岁、用户id不能大于五位数");
+    		return ERROR;
+    	}
         return SUCCESS;  
     }  
   
@@ -53,13 +62,16 @@ public class UserAction extends ActionSupport{
     }  
   
     public String update() {  
-        userService.updateUser(user);  
+    	boolean tmp = userService.updateUser(user); 
+        if(!tmp){
+    		addFieldError("message", "用户名不能为空、用户id重复、用户id不能大于五位数");
+    		return ERROR;
+    	}
         return SUCCESS;  
     }  
     public String queryAllUser() {  
         userList = userService.findAllUser();  
         return "userList";  
     }  
-  
-	
+    
 }

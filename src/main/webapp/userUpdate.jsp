@@ -11,7 +11,7 @@
     <center>  
         <h1>修改用户</h1>  
         <s:form action="user_update" namespace="/user" method="post">  
-            <s:hidden name="user.id"></s:hidden>  
+            <s:hidden name="user.userid"></s:hidden>  
             <s:textfield label="用户名" name="user.username"></s:textfield>  
             <s:textfield label="年龄" name="user.age"></s:textfield>   
             <s:submit value="提交"></s:submit>  
